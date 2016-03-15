@@ -10,7 +10,6 @@ decode_results results;
 
 void setup()
 {
-  Serial.begin(9600);
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
   pinMode(IN1, OUTPUT);
@@ -30,8 +29,6 @@ void setup()
  */
 void loop() {
   if (irrecv.decode(&results)) {
-    String code = String(results.value, HEX);
-    Serial.println("Code = " + code);
     if (code.equalsIgnoreCase("20df02fd")) { // UP
       leftMotorsStart(HIGH); // forward
       rightMotorsStart(LOW); // forward
